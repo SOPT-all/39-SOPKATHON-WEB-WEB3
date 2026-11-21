@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { HTTPError } from 'ky';
+import { type ComponentProps, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 
 import FormSection from '@/pages/preschool/input/components/FormSection';
@@ -6,30 +7,50 @@ import RecommendLoading from '@/pages/preschool/input/components/RecommendLoadin
 import WaitTimeButton from '@/pages/preschool/input/components/WaitTimeButton';
 import { PATH } from '@/routes/paths';
 import ActionButton from '@/shared/components/ActionButton';
+import Alert from '@/shared/components/Alert';
 import BottomFixedBar from '@/shared/components/BottomFixedBar';
 import Header from '@/shared/components/Header';
 import SelectButton from '@/shared/components/SelectButton';
 import TextField from '@/shared/components/TextField';
+import { usePostPreschoolRecommendation } from '@/shared/hooks/usePreschool';
+import { savePreschoolRecommendation } from '@/shared/utils/preschoolStorage';
 
 const AGE_OPTIONS = [4, 5, 6, 7];
 const WAIT_TIME_OPTIONS = [5, 10, 15, 20, 25, 30];
-const LOADING_DURATION = 2000;
+
+type AlertContent = Pick<ComponentProps<typeof Alert>, 'title' | 'description' | 'buttonText'>;
+
+// 422: 장소로 질문을 만들 수 없음 → Figma 디자인 문구
+const INVALID_PLACE_STATUS = 422;
+const INVALID_PLACE_ALERT: AlertContent = {
+  title: '입력한 장소를 확인해 주세요',
+  description: '[카페]처럼 정확한 장소의 이름을 작성해주세요.',
+  buttonText: '장소 다시 입력하기',
+};
+
+// 시간 초과, 네트워크 오류처럼 서버 응답(메시지)이 없을 때
+const DEFAULT_ERROR_MESSAGE = '일시적인 문제로 놀이를 만들지 못했어요. 잠시 후 다시 시도해 주세요.';
+
+// 422 → Figma 알림 / 그 외 → 서버가 보낸 message를 그대로 표시
+const getErrorAlert = (error: Error): AlertContent => {
+  if (!(error instanceof HTTPError)) return { title: DEFAULT_ERROR_MESSAGE, buttonText: '확인' };
+  if (error.response.status === INVALID_PLACE_STATUS) return INVALID_PLACE_ALERT;
+
+  const { data } = error;
+  const message = typeof data === 'object' && data !== null && 'message' in data ? String(data.message) : '';
+  return { title: message || DEFAULT_ERROR_MESSAGE, buttonText: '확인' };
+};
 
 const PreschoolInputPage = () => {
   const navigate = useNavigate();
   const [selectedAge, setSelectedAge] = useState<number | null>(null);
   const [place, setPlace] = useState('');
   const [selectedWaitTime, setSelectedWaitTime] = useState<number | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [errorAlert, setErrorAlert] = useState<AlertContent | null>(null);
+  const { mutate: postRecommendation, isPending, reset } = usePostPreschoolRecommendation();
 
-  // 로딩 2초 뒤 장소별 추천으로 이동 (뒤로가기로 로딩을 끄면 타이머 취소)
-  // TODO: 추천 API 연동 후 API 응답 기준으로 이동
-  useEffect(() => {
-    if (!isLoading) return;
-
-    const timer = setTimeout(() => navigate(PATH.PRESCHOOL_GAME_GUIDE), LOADING_DURATION);
-    return () => clearTimeout(timer);
-  }, [isLoading, navigate]);
+  // 로딩 중 뒤로가기로 취소한 요청의 응답은 무시하기 위한 요청 번호
+  const requestIdRef = useRef(0);
 
   // 나이, 장소는 필수 / 대기시간은 선택
   const isSubmittable = selectedAge !== null && place.trim() !== '';
@@ -41,12 +62,39 @@ const PreschoolInputPage = () => {
     setSelectedWaitTime((prev) => (prev === waitTime ? null : waitTime));
   };
 
-  const handleCompleteClick = () => setIsLoading(true);
+  const handleCompleteClick = () => {
+    if (selectedAge === null) return;
 
-  // 로딩 중 뒤로가기 → 입력 화면으로 (입력값 유지)
-  const handleLoadingBackClick = () => setIsLoading(false);
+    const requestId = ++requestIdRef.current;
+    postRecommendation(
+      {
+        age: selectedAge,
+        placeName: place.trim(),
+        ...(selectedWaitTime !== null && { waitingMinutes: selectedWaitTime }),
+      },
+      {
+        onSuccess: (recommendation) => {
+          if (requestId !== requestIdRef.current) return;
+          savePreschoolRecommendation(recommendation);
+          navigate(PATH.PRESCHOOL_GAME_GUIDE);
+        },
+        onError: (error) => {
+          if (requestId !== requestIdRef.current) return;
+          setErrorAlert(getErrorAlert(error));
+        },
+      },
+    );
+  };
 
-  if (isLoading) return <RecommendLoading onBackClick={handleLoadingBackClick} />;
+  // 로딩 중 뒤로가기 -> 요청 결과를 무시하고 입력 화면으로 (입력값 유지)
+  const handleLoadingBackClick = () => {
+    requestIdRef.current += 1;
+    reset();
+  };
+
+  const handleErrorAlertClose = () => setErrorAlert(null);
+
+  if (isPending) return <RecommendLoading onBackClick={handleLoadingBackClick} />;
 
   return (
     <main className="flex min-h-dvh flex-col px-8 pb-24.5">
@@ -100,6 +148,15 @@ const PreschoolInputPage = () => {
           완료
         </ActionButton>
       </BottomFixedBar>
+
+      <Alert
+        isOpen={errorAlert !== null}
+        title={errorAlert?.title ?? ''}
+        description={errorAlert?.description}
+        buttonText={errorAlert?.buttonText ?? ''}
+        onButtonClick={handleErrorAlertClose}
+        onClose={handleErrorAlertClose}
+      />
     </main>
   );
 };

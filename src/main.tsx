@@ -4,8 +4,8 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router';
 
-import { queryClient } from '@/shared/apis/queryClient';
 import { router } from '@/routes/router';
+import { queryClient } from '@/shared/apis/queryClient';
 
 import '@/shared/styles/index.css';
 

@@ -5,6 +5,7 @@ import { PATH } from '@/routes/paths';
 import ActionButton from '@/shared/components/ActionButton';
 import AnswerButton from '@/shared/components/AnswerButton';
 import Header from '@/shared/components/Header';
+import { SCHOOL_AGE_STORAGE_KEY } from '@/shared/constants/storageKeys';
 
 const AGE_OPTIONS = [8, 9, 10];
 
@@ -14,8 +15,11 @@ const SchoolAgeSelectPage = () => {
 
   const handleAgeClick = (age: number) => setSelectedAge(age);
 
-  // TODO: 나이 입력 API 연동 시 선택한 나이 전송
-  const handleCompleteClick = () => navigate(PATH.SCHOOL_GAMES);
+  const handleCompleteClick = () => {
+    if (selectedAge === null) return;
+    sessionStorage.setItem(SCHOOL_AGE_STORAGE_KEY, String(selectedAge));
+    navigate(PATH.SCHOOL_GAMES);
+  };
 
   return (
     <main className="flex min-h-dvh flex-col px-8 pb-8">

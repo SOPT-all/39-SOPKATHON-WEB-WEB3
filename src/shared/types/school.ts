@@ -46,3 +46,19 @@ export interface SchoolAnswerResult {
   completedSentence: string;
   explanation: string;
 }
+
+export interface SchoolChoice {
+  choiceId: number;
+  text: string;
+}
+
+export interface SchoolRoundQuestion {
+  questionId: number;
+  text: string;
+  choices: SchoolChoice[];
+}
+
+export interface SchoolRound {
+  roundId: number;
+  questions: SchoolRoundQuestion[];
+}

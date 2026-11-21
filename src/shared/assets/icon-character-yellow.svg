@@ -1,0 +1,15 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 22">
+<path id="Bubble/Left" d="M0 35C0 15.67 15.67 0 35 0C54.33 0 70 15.67 70 35C70 54.33 54.33 70 35 70H4C1.79086 70 0 68.2091 0 66V35Z" fill="url(#paint0_radial_0_49)"/>
+<g id="Group 24">
+<ellipse id="Eye/Right-1" cx="17.6833" cy="33" rx="3" ry="4" fill="black"/>
+<ellipse id="Eye/Right-2" cx="28.6833" cy="33" rx="3" ry="4" fill="black"/>
+</g>
+</g>
+<defs>
+<radialGradient id="paint0_radial_0_49" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(38.875 33) rotate(137.188) scale(39.3615)">
+<stop offset="0.125044" stop-color="#FFE54D"/>
+<stop offset="1" stop-color="#FFF1A8"/>
+</radialGradient>
+</defs>
+</svg>

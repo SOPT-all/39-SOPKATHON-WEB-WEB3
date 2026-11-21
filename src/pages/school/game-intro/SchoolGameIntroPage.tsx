@@ -31,7 +31,8 @@ const SchoolGameIntroPage = () => {
       <div className="mt-4">
         <OptionCard title={game.name} description={meta.description} />
       </div>
-      <div className="-mx-8 mt-24 px-15">
+
+      <div className="-mx-8 mt-24 px-8">
         <GameContextBox question={meta.exampleQuestion} answer={meta.exampleAnswer} />
       </div>
       <ActionButton className="mt-auto" onClick={handleStartClick}>

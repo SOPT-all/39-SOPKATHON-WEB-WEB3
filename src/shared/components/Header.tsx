@@ -21,7 +21,7 @@ const Header = ({ title, hasSymbol = false, onBackClick }: HeaderProps) => {
   };
 
   return (
-    <header className="flex w-full items-center justify-between">
+    <header className="flex w-full items-center justify-between pt-8">
       {title ? (
         <h1 className="text-headline-lg-paperlogy text-black">{title}</h1>
       ) : (

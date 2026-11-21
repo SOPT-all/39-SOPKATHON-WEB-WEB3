@@ -16,7 +16,7 @@ const SchoolResultPage = () => {
     <main className="flex min-h-dvh flex-col px-8 pb-8">
       <Header title="게임 요약" />
       <h2 className="mt-17 text-headline-lg text-black">오늘 완성한 문장</h2>
-      <div className="mt-4 flex h-15 items-center justify-center gap-[22px] rounded-xl bg-blue-100 p-2.5">
+      <div className="mt-4 flex items-center justify-center gap-[22px] rounded-xl bg-blue-100 p-2.5">
         <p className="text-body-md-m text-gray-700">
           {result.totalCount}문제를 풀고 {result.correctCount}문제를 맞혔어요
         </p>
@@ -25,7 +25,8 @@ const SchoolResultPage = () => {
       <ul className="mt-[46px] flex flex-col gap-3.5">
         {result.questions.map(({ questionNumber, isCorrect, completedSentence }, index) => (
           <Fragment key={questionNumber}>
-            {index > 0 && <li aria-hidden className="mx-[6.25px] border-t border-gray-200" />}
+            {/* Figma 구분선은 높이 0이라 자리를 차지하지 않음 → -mb-px로 1px 상쇄 */}
+            {index > 0 && <li aria-hidden className="mx-[6.25px] -mb-px border-t border-gray-200" />}
             <li className="flex flex-col">
               <p
                 className={`flex h-7.5 items-center text-body-md-m ${isCorrect ? 'text-blue-650' : 'text-accent-red'}`}

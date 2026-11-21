@@ -1,18 +1,22 @@
 import { useRef, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { Navigate, useNavigate } from 'react-router';
 
 import { PATH } from '@/routes/paths';
 import ActionButton from '@/shared/components/ActionButton';
 import Header from '@/shared/components/Header';
 import ImageView from '@/shared/components/ImageView';
-import { MOCK_PRESCHOOL_QUESTIONS } from '@/shared/constants/mockPreschoolQuestions';
+import { getPreschoolRecommendation } from '@/shared/utils/preschoolStorage';
 
 const PreschoolGameFinishPage = () => {
   const navigate = useNavigate();
   const sliderRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const questions = getPreschoolRecommendation()?.questions ?? [];
 
-  const totalCount = MOCK_PRESCHOOL_QUESTIONS.length;
+  // 추천 결과 없이 들어오면 입력 화면으로
+  if (questions.length === 0) return <Navigate to={PATH.PRESCHOOL_INPUT} replace />;
+
+  const totalCount = questions.length;
 
   const handleSliderScroll = () => {
     const slider = sliderRef.current;
@@ -50,7 +54,7 @@ const PreschoolGameFinishPage = () => {
         onScroll={handleSliderScroll}
         className="-mx-8 mt-28 flex snap-x snap-mandatory scrollbar-none overflow-x-auto [&::-webkit-scrollbar]:hidden"
       >
-        {MOCK_PRESCHOOL_QUESTIONS.map(({ imageUrl }, index) => (
+        {questions.map(({ imageUrl }, index) => (
           <div key={index} className="w-full shrink-0 snap-center px-10.25">
             <ImageView src={imageUrl} />
           </div>
@@ -58,7 +62,7 @@ const PreschoolGameFinishPage = () => {
       </div>
 
       <div className="mt-auto mb-11 flex justify-center gap-2">
-        {MOCK_PRESCHOOL_QUESTIONS.map((_, index) => (
+        {questions.map((_, index) => (
           <button
             key={index}
             type="button"

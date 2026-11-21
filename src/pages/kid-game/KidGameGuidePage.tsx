@@ -1,8 +1,10 @@
+import { PATH } from '@/routes/paths';
 import iconKidGameBlue from '@/shared/assets/icon-kid-game-blue.svg';
 import iconKidGameYellow from '@/shared/assets/icon-kid-game-yellow.svg';
 import ActionButton from '@/shared/components/ActionButton';
 import Header from '@/shared/components/Header';
 import OptionCard from '@/shared/components/OptionCard';
+import { useNavigate } from 'react-router';
 
 const GAME_GUIDE = {
   title: '주변 물건 찾기',
@@ -10,10 +12,11 @@ const GAME_GUIDE = {
 };
 
 const KidGameGuidePage = () => {
+  const navigate = useNavigate();
   const place = '식당';
 
   const handleStartClick = () => {
-    // TODO: 문제 화면으로 이동
+    navigate(PATH.KID_GAME);
   };
 
   return (

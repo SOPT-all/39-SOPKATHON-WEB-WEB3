@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import { generatePath, useNavigate, useParams } from 'react-router';
 
-import FeedbackView from '@/pages/elementary-round/components/FeedbackView';
-import QuestionView from '@/pages/elementary-round/components/QuestionView';
+import FeedbackView from '@/pages/school/round/components/FeedbackView';
+import QuestionView from '@/pages/school/round/components/QuestionView';
 import { PATH } from '@/routes/paths';
 import Header from '@/shared/components/Header';
 import StatusBar from '@/shared/components/StatusBar';
-import { getMockAnswerResult } from '@/shared/constants/mockElementaryAnswers';
-import { MOCK_ELEMENTARY_QUESTIONS } from '@/shared/constants/mockElementaryQuestions';
-import type { ElementaryAnswerResult } from '@/shared/types/elementary';
+import { getMockAnswerResult } from '@/shared/constants/mockSchoolAnswers';
+import { MOCK_SCHOOL_QUESTIONS } from '@/shared/constants/mockSchoolQuestions';
+import type { SchoolAnswerResult } from '@/shared/types/school';
 
-const ElementaryRoundPage = () => {
+const SchoolRoundPage = () => {
   const navigate = useNavigate();
   const { roundId = '' } = useParams();
-  const questions = MOCK_ELEMENTARY_QUESTIONS;
+  const questions = MOCK_SCHOOL_QUESTIONS;
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
-  const [answerResult, setAnswerResult] = useState<ElementaryAnswerResult | null>(null);
+  const [answerResult, setAnswerResult] = useState<SchoolAnswerResult | null>(null);
 
   const question = questions[questionIndex];
   const isLastQuestion = questionIndex === questions.length - 1;
@@ -29,7 +29,7 @@ const ElementaryRoundPage = () => {
 
   const handleNextClick = () => {
     if (isLastQuestion) {
-      navigate(generatePath(PATH.ELEMENTARY_RESULT, { roundId }));
+      navigate(generatePath(PATH.SCHOOL_RESULT, { roundId }));
       return;
     }
     setQuestionIndex((prev) => prev + 1);
@@ -64,4 +64,4 @@ const ElementaryRoundPage = () => {
   );
 };
 
-export default ElementaryRoundPage;
+export default SchoolRoundPage;

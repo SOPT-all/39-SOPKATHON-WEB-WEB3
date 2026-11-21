@@ -8,13 +8,19 @@ import iconLoadingCharacterYellow from '@/shared/assets/icon-loading-character-y
 import Header from '@/shared/components/Header';
 
 const AGE_GROUPS = [
-  { id: 'kid', title: '유아', ageRange: '4~7세', iconSrc: iconLoadingCharacterYellow, path: PATH.YOUNG_INPUT },
   {
-    id: 'elementary',
+    id: 'preschool',
+    title: '유아',
+    ageRange: '4~7세',
+    iconSrc: iconLoadingCharacterYellow,
+    path: PATH.PRESCHOOL_INPUT,
+  },
+  {
+    id: 'school',
     title: '초등 저학년',
     ageRange: '8~10세',
     iconSrc: iconLoadingCharacterBlue,
-    path: PATH.ELEMENTARY_AGE_SELECT,
+    path: PATH.SCHOOL_AGE_SELECT,
   },
 ];
 

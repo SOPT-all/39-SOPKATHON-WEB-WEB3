@@ -1,7 +1,7 @@
-import type { ElementaryAnswerResult } from '@/shared/types/elementary';
+import type { SchoolAnswerResult } from '@/shared/types/school';
 
 // TODO: 답변 제출 API(POST /school/rounds/{roundId}/answers) 연동 시 이 파일 삭제
-const MOCK_ELEMENTARY_ANSWERS: Record<
+const MOCK_SCHOOL_ANSWERS: Record<
   number,
   { answer: string; completedSentence: string; correctExplanation: string; wrongExplanation: string }
 > = {
@@ -25,8 +25,8 @@ const MOCK_ELEMENTARY_ANSWERS: Record<
   },
 };
 
-export const getMockAnswerResult = (questionId: number, choice: string): ElementaryAnswerResult => {
-  const { answer, completedSentence, correctExplanation, wrongExplanation } = MOCK_ELEMENTARY_ANSWERS[questionId];
+export const getMockAnswerResult = (questionId: number, choice: string): SchoolAnswerResult => {
+  const { answer, completedSentence, correctExplanation, wrongExplanation } = MOCK_SCHOOL_ANSWERS[questionId];
   const isCorrect = choice === answer;
   return { isCorrect, completedSentence, explanation: isCorrect ? correctExplanation : wrongExplanation };
 };

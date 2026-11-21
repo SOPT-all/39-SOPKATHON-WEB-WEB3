@@ -1,17 +1,21 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
+import { PATH } from '@/routes/paths';
 import ActionButton from '@/shared/components/ActionButton';
 import Header from '@/shared/components/Header';
 import AnswerButton from '@/shared/components/AnswerButton';
 
 const AGE_OPTIONS = [8, 9, 10];
 
-const ElementaryAgeSelectPage = () => {
+const SchoolAgeSelectPage = () => {
+  const navigate = useNavigate();
   const [selectedAge, setSelectedAge] = useState<number | null>(null);
 
   const handleAgeClick = (age: number) => setSelectedAge(age);
 
-  const handleCompleteClick = () => {};
+  // TODO: 나이 입력 API 연동 시 선택한 나이 전송
+  const handleCompleteClick = () => navigate(PATH.SCHOOL_GAMES);
 
   return (
     <main className="flex min-h-dvh flex-col px-8 pb-8">
@@ -34,4 +38,4 @@ const ElementaryAgeSelectPage = () => {
   );
 };
 
-export default ElementaryAgeSelectPage;
+export default SchoolAgeSelectPage;

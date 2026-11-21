@@ -1,7 +1,7 @@
-import type { ElementaryRoundResult } from '@/shared/types/elementary';
+import type { SchoolRoundResult } from '@/shared/types/school';
 
 // TODO: 회차 결과 API(GET /school/rounds/{roundId}/result) 연동 시 이 파일 삭제
-export const MOCK_ELEMENTARY_RESULT: ElementaryRoundResult = {
+export const MOCK_SCHOOL_RESULT: SchoolRoundResult = {
   totalCount: 3,
   correctCount: 2,
   questions: [

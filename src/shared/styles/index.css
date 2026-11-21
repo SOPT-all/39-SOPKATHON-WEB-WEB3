@@ -31,6 +31,36 @@
 
   /* Accent */
   --color-accent-red: #fa5862;
+
+  /* Animation — Figma 캐릭터 모션: 2초 동안 8px씩 두 번 튀기 */
+  --animate-bounce-twice: bounce-twice 2s infinite;
+
+  @keyframes bounce-twice {
+    0% {
+      translate: 0 0;
+      animation-timing-function: ease-out;
+    }
+    17.5% {
+      translate: 0 -8px;
+      animation-timing-function: ease-in;
+    }
+    35% {
+      translate: 0 0;
+      animation-timing-function: ease-in-out;
+    }
+    60% {
+      translate: 0 0;
+      animation-timing-function: ease-out;
+    }
+    77.5% {
+      translate: 0 -8px;
+      animation-timing-function: ease-in;
+    }
+    95%,
+    100% {
+      translate: 0 0;
+    }
+  }
 }
 
 @layer base {

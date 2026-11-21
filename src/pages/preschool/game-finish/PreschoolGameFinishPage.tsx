@@ -39,7 +39,7 @@ const PreschoolGameFinishPage = () => {
   };
 
   return (
-    <main className="flex min-h-dvh flex-col bg-white px-8">
+    <main className="flex h-dvh flex-col bg-white px-8">
       <Header title="놀이 마무리" onBackClick={handleBackClick} />
 
       <div className="mt-17 flex flex-col gap-1">
@@ -52,16 +52,19 @@ const PreschoolGameFinishPage = () => {
       <div
         ref={sliderRef}
         onScroll={handleSliderScroll}
-        className="-mx-8 mt-28 flex snap-x snap-mandatory scrollbar-none overflow-x-auto [&::-webkit-scrollbar]:hidden"
+        className="-mx-8 mt-28 mb-6 flex min-h-0 flex-1 snap-x snap-mandatory scrollbar-none overflow-x-auto [&::-webkit-scrollbar]:hidden"
       >
         {questions.map(({ imageUrl }, index) => (
-          <div key={index} className="w-full shrink-0 snap-center px-10.25">
-            <ImageView src={imageUrl} />
+          // 슬라이드마다 남은 높이를 차지하고, 그 안에서 폭·높이 중 작은 쪽에 맞춰 1:1
+          <div key={index} className="[container-type:size] flex w-full shrink-0 snap-center justify-center px-10.25">
+            <div className="size-[min(100cqw,100cqh)]">
+              <ImageView src={imageUrl} />
+            </div>
           </div>
         ))}
       </div>
 
-      <div className="mt-auto mb-11 flex justify-center gap-2">
+      <div className="mb-11 flex justify-center gap-2">
         {questions.map((_, index) => (
           <button
             key={index}

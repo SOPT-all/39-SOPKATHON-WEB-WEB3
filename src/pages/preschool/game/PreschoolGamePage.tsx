@@ -29,27 +29,28 @@ const PreschoolGamePage = () => {
   };
 
   return (
-    <main className="flex min-h-dvh flex-col bg-white px-8 pb-8">
+    <main className="flex h-dvh flex-col bg-white px-8 pb-8">
       <Header />
 
       <div className="mt-5">
         <StatusBar currentStep={step} totalSteps={totalCount} />
       </div>
 
-      <div className="mt-10.75 flex flex-col gap-3">
+      <div className="mt-10.75 flex min-h-26 flex-col gap-3">
         <h2 className="text-headline-lg whitespace-pre-line text-gray-900">{currentQuestion.text}</h2>
         <p className="text-label-tab-m text-gray-600">
           문제 {step} / {totalCount}
         </p>
       </div>
 
-      <div className="-mx-8 mt-17 px-10.25">
-        <ImageView src={currentQuestion.imageUrl} />
+      {/* 남은 높이를 차지하고, 그 안에서 폭·높이 중 작은 쪽에 맞춰 1:1 */}
+      <div className="[container-type:size] -mx-8 mt-17 mb-6 flex min-h-0 flex-1 justify-center px-10.25">
+        <div className="size-[min(100cqw,100cqh)]">
+          <ImageView src={currentQuestion.imageUrl} />
+        </div>
       </div>
 
-      <ActionButton className="mt-auto" onClick={handleFoundClick}>
-        찾았어요
-      </ActionButton>
+      <ActionButton onClick={handleFoundClick}>찾았어요</ActionButton>
     </main>
   );
 };

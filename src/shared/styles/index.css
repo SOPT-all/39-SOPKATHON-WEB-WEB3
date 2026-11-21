@@ -31,6 +31,65 @@
 
   /* Accent */
   --color-accent-red: #fa5862;
+
+  /* Animation: 로딩 캐릭터가 2.4초마다 8px씩 두 번 튀기 (파랑이 노랑보다 살짝 늦게) */
+  --animate-bounce-yellow: bounce-yellow 2.4s infinite;
+  --animate-bounce-blue: bounce-blue 2.4s infinite;
+
+  @keyframes bounce-yellow {
+    0% {
+      translate: 0 0;
+      animation-timing-function: ease-out;
+    }
+    14.58% {
+      translate: 0 -8px;
+      animation-timing-function: ease-in;
+    }
+    29.17% {
+      translate: 0 0;
+      animation-timing-function: ease-in-out;
+    }
+    50% {
+      translate: 0 0;
+      animation-timing-function: ease-out;
+    }
+    64.58% {
+      translate: 0 -8px;
+      animation-timing-function: ease-in;
+    }
+    79.17%,
+    100% {
+      translate: 0 0;
+    }
+  }
+
+  @keyframes bounce-blue {
+    0%,
+    12.5% {
+      translate: 0 0;
+      animation-timing-function: ease-out;
+    }
+    27.08% {
+      translate: 0 -8px;
+      animation-timing-function: ease-in;
+    }
+    41.67% {
+      translate: 0 0;
+      animation-timing-function: ease-in-out;
+    }
+    62.5% {
+      translate: 0 0;
+      animation-timing-function: ease-out;
+    }
+    77.08% {
+      translate: 0 -8px;
+      animation-timing-function: ease-in;
+    }
+    91.67%,
+    100% {
+      translate: 0 0;
+    }
+  }
 }
 
 @layer base {

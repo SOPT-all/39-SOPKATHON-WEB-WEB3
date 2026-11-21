@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 
 import FormSection from '@/pages/young/components/FormSection';
+import RecommendLoading from '@/pages/young/components/RecommendLoading';
 import WaitTimeButton from '@/pages/young/components/WaitTimeButton';
+import { PATH } from '@/routes/paths';
 import ActionButton from '@/shared/components/ActionButton';
 import Header from '@/shared/components/Header';
 import SelectButton from '@/shared/components/SelectButton';
@@ -9,11 +12,23 @@ import TextField from '@/shared/components/TextField';
 
 const AGE_OPTIONS = [4, 5, 6, 7];
 const WAIT_TIME_OPTIONS = [5, 10, 15, 20, 25, 30];
+const LOADING_DURATION = 2000;
 
 const YoungInputPage = () => {
+  const navigate = useNavigate();
   const [selectedAge, setSelectedAge] = useState<number | null>(null);
   const [place, setPlace] = useState('');
   const [selectedWaitTime, setSelectedWaitTime] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // 로딩 2초 뒤 장소별 추천으로 이동 (뒤로가기로 로딩을 끄면 타이머 취소)
+  // TODO: 추천 API 연동 후 API 응답 기준으로 이동
+  useEffect(() => {
+    if (!isLoading) return;
+
+    const timer = setTimeout(() => navigate(PATH.KID_GAME_GUIDE), LOADING_DURATION);
+    return () => clearTimeout(timer);
+  }, [isLoading, navigate]);
 
   // 나이, 장소는 필수 / 대기시간은 선택
   const isSubmittable = selectedAge !== null && place.trim() !== '';
@@ -25,8 +40,12 @@ const YoungInputPage = () => {
     setSelectedWaitTime((prev) => (prev === waitTime ? null : waitTime));
   };
 
-  // TODO: 추천 API 연동 + 로딩 뷰
-  const handleCompleteClick = () => {};
+  const handleCompleteClick = () => setIsLoading(true);
+
+  // 로딩 중 뒤로가기 → 입력 화면으로 (입력값 유지)
+  const handleLoadingBackClick = () => setIsLoading(false);
+
+  if (isLoading) return <RecommendLoading onBackClick={handleLoadingBackClick} />;
 
   return (
     <main className="flex min-h-dvh flex-col px-8 pt-3 pb-8">

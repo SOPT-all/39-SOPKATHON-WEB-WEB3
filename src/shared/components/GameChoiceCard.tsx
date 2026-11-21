@@ -6,23 +6,23 @@ interface GameChoiceCardProps {
   onCardClick?: () => void;
 }
 
-// #bababa·#121212·#666, 18/22 Bold·14/17 Regular는 Figma 값. 일치하는 토큰이 없어 그대로 사용
+// #bababa·#121212·#666은 Figma 값. 일치하는 컬러 토큰이 없어 그대로 사용
 const GameChoiceCard = ({ iconSrc, title, description, isSelected = false, onCardClick }: GameChoiceCardProps) => {
   return (
     <button
       type="button"
       aria-pressed={isSelected}
       onClick={onCardClick}
-      className={`flex w-full items-center gap-4 rounded-xl border px-[18px] py-4 text-left ${
+      className={`flex h-[77px] w-full items-center gap-4 rounded-xl border px-[18px] text-left ${
         isSelected ? 'border-blue-650 bg-blue-100' : 'border-[#bababa] bg-white'
       }`}
     >
       <span className="flex size-10 shrink-0 items-center justify-center">
         <img src={iconSrc} alt="" />
       </span>
-      <span className="flex flex-col gap-1">
-        <span className="text-[18px]/[22px] font-bold text-[#121212]">{title}</span>
-        <span className="text-[14px]/[17px] text-[#666]">{description}</span>
+      <span className="flex flex-col">
+        <span className="text-headline-sm-sb text-[#121212]">{title}</span>
+        <span className="-mt-0.5 text-label-tab-m text-[#666]">{description}</span>
       </span>
     </button>
   );

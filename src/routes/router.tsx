@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router';
 
 import RootLayout from '@/layout/RootLayout';
-import ElementaryAgeSelectPage from '@/pages/elementary/ElementaryAgeSelectPage';
+import ElementaryAgeSelectPage from '@/pages/elementary-age-select/ElementaryAgeSelectPage';
 import ElementaryGameIntroPage from '@/pages/elementary-game-intro/ElementaryGameIntroPage';
 import ElementaryRoundPage from '@/pages/elementary-round/ElementaryRoundPage';
 import HomePage from '@/pages/home/HomePage';

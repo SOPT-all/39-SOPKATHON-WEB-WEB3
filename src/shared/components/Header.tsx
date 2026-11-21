@@ -36,7 +36,7 @@ const Header = ({ title, hasSymbol = false, onBackClick }: HeaderProps) => {
       <button
         type="button"
         onClick={handleBackClick}
-        className="text-body-md-m flex size-8 items-center justify-center text-gray-600"
+        className="flex size-8 items-center justify-center text-body-md-m text-gray-600"
       >
         뒤로
       </button>

@@ -30,9 +30,13 @@ const PreschoolGameFinishPage = () => {
     navigate(PATH.HOME, { replace: true });
   };
 
+  const handleBackClick = () => {
+    navigate(`${PATH.PRESCHOOL_GAME}?step=${totalCount}`, { replace: true });
+  };
+
   return (
     <main className="flex min-h-dvh flex-col bg-white px-8">
-      <Header title="놀이 마무리" />
+      <Header title="놀이 마무리" onBackClick={handleBackClick} />
 
       <div className="mt-17 flex flex-col gap-1">
         <h2 className="text-headline-lg text-black">오늘 찾은 물건</h2>

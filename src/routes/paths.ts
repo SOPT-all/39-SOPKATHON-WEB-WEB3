@@ -9,4 +9,5 @@ export const PATH = {
   ELEMENTARY_ROUND: '/elementary/rounds/:roundId',
   ELEMENTARY_RESULT: '/elementary/rounds/:roundId/result',
   AGE_GROUP_SELECT: '/age-group-select',
+  ELEMENTARY_GAMES: '/elementary/games',
 } as const;

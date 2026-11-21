@@ -11,3 +11,9 @@ export interface ElementaryQuestion {
   sentence: string;
   choices: string[];
 }
+
+export interface ElementaryAnswerResult {
+  isCorrect: boolean;
+  completedSentence: string;
+  explanation: string;
+}

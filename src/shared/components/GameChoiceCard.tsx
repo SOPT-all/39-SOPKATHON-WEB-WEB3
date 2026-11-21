@@ -20,7 +20,7 @@ const GameChoiceCard = ({ iconSrc, title, description, isSelected = false, onCar
       <span className="flex size-10 shrink-0 items-center justify-center">
         <img src={iconSrc} alt="" />
       </span>
-     <span className="flex flex-col">
+      <span className="flex flex-col">
         <span className="text-headline-sm-sb text-[#121212]">{title}</span>
         <span className="-mt-0.5 text-label-tab-m text-[#666]">{description}</span>
       </span>

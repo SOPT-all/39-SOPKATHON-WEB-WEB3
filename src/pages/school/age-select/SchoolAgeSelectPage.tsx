@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router';
 
 import { PATH } from '@/routes/paths';
 import ActionButton from '@/shared/components/ActionButton';
-import Header from '@/shared/components/Header';
 import AnswerButton from '@/shared/components/AnswerButton';
+import Header from '@/shared/components/Header';
 
 const AGE_OPTIONS = [8, 9, 10];
 

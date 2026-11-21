@@ -25,12 +25,12 @@ const Header = ({ title, hasSymbol = false, onBackClick }: HeaderProps) => {
       {title ? (
         <h1 className="text-headline-lg-paperlogy text-black">{title}</h1>
       ) : (
-        <div className="flex items-center gap-2">
+        <h1 className="flex items-center gap-2">
           {hasSymbol && <img src={iconLogoSymbol} alt="" />}
-          <div className="flex h-8 w-12 items-center justify-center">
+          <span className="flex h-8 w-12 items-center justify-center">
             <img src={iconLogoTypo} alt="해봄" />
-          </div>
-        </div>
+          </span>
+        </h1>
       )}
 
       <button

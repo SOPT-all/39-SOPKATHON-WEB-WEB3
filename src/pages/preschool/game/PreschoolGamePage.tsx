@@ -33,7 +33,7 @@ const PreschoolGamePage = () => {
       </div>
 
       <div className="mt-10.75 flex flex-col gap-3">
-        <h1 className="text-headline-lg whitespace-pre-line text-gray-900">{currentQuestion.text}</h1>
+        <h2 className="text-headline-lg whitespace-pre-line text-gray-900">{currentQuestion.text}</h2>
         <p className="text-label-tab-m text-gray-600">
           문제 {step} / {totalCount}
         </p>

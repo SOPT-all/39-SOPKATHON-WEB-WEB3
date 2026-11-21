@@ -1,10 +1,11 @@
+import { useNavigate } from 'react-router';
+
 import { PATH } from '@/routes/paths';
 import iconPreschoolGameBlue from '@/shared/assets/icon-preschool-game-blue.svg';
 import iconPreschoolGameYellow from '@/shared/assets/icon-preschool-game-yellow.svg';
 import ActionButton from '@/shared/components/ActionButton';
 import Header from '@/shared/components/Header';
 import OptionCard from '@/shared/components/OptionCard';
-import { useNavigate } from 'react-router';
 
 const GAME_GUIDE = {
   title: '주변 물건 찾기',
@@ -22,7 +23,9 @@ const PreschoolGameGuidePage = () => {
   return (
     <main className="flex min-h-dvh flex-col bg-white px-8">
       <Header />
-      <h1 className="mt-17 text-headline-lg text-gray-900">{place}에서 해볼 놀이</h1>
+
+      <h2 className="mt-17 text-headline-lg text-gray-900">{place}에서 해볼 놀이</h2>
+
       <div className="mt-4">
         <OptionCard title={GAME_GUIDE.title} description={GAME_GUIDE.description} />
       </div>

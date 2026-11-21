@@ -6,6 +6,7 @@ import RecommendLoading from '@/pages/preschool/input/components/RecommendLoadin
 import WaitTimeButton from '@/pages/preschool/input/components/WaitTimeButton';
 import { PATH } from '@/routes/paths';
 import ActionButton from '@/shared/components/ActionButton';
+import BottomFixedBar from '@/shared/components/BottomFixedBar';
 import Header from '@/shared/components/Header';
 import SelectButton from '@/shared/components/SelectButton';
 import TextField from '@/shared/components/TextField';
@@ -48,7 +49,7 @@ const PreschoolInputPage = () => {
   if (isLoading) return <RecommendLoading onBackClick={handleLoadingBackClick} />;
 
   return (
-    <main className="flex min-h-dvh flex-col px-8 pb-8">
+    <main className="flex min-h-dvh flex-col px-8 pb-24.5">
       <Header hasSymbol />
 
       <div className="mt-17 flex flex-col gap-3">
@@ -94,9 +95,11 @@ const PreschoolInputPage = () => {
         </FormSection>
       </div>
 
-      <ActionButton className="mt-auto" disabled={!isSubmittable} onClick={handleCompleteClick}>
-        완료
-      </ActionButton>
+      <BottomFixedBar>
+        <ActionButton disabled={!isSubmittable} onClick={handleCompleteClick}>
+          완료
+        </ActionButton>
+      </BottomFixedBar>
     </main>
   );
 };

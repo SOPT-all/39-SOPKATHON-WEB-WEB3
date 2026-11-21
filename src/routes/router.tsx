@@ -10,6 +10,8 @@ import NotFoundPage from '@/pages/not-found/NotFoundPage';
 import YoungInputPage from '@/pages/young/YoungInputPage';
 import { PATH } from '@/routes/paths';
 import KidGameGuidePage from '@/pages/kid-game/KidGameGuidePage';
+import KidGamePage from '@/pages/kid-game/KidGamePage';
+import KidGameFinishPage from '@/pages/kid-game/KidGameFinishPage';
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +20,8 @@ export const router = createBrowserRouter([
       { path: PATH.HOME, element: <HomePage /> },
       { path: PATH.ELEMENTARY_AGE_SELECT, element: <ElementaryAgeSelectPage /> },
       { path: PATH.KID_GAME_GUIDE, element: <KidGameGuidePage /> },
+      { path: PATH.KID_GAME, element: <KidGamePage /> },
+      { path: PATH.KID_GAME_FINISH, element: <KidGameFinishPage /> },
       { path: PATH.ELEMENTARY_GAME_INTRO, element: <ElementaryGameIntroPage /> },
       { path: PATH.YOUNG_INPUT, element: <YoungInputPage /> },
       { path: PATH.ELEMENTARY_ROUND, element: <ElementaryRoundPage /> },

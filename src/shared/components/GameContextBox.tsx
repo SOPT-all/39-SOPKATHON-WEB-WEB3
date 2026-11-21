@@ -7,7 +7,7 @@ interface GameContextBoxProps {
 }
 
 const BUBBLE_BASE = 'flex min-h-[42px] items-center justify-center rounded-[20px] text-body-md-sb text-gray-700';
-const QUESTION_BUBBLE = `${BUBBLE_BASE} min-w-0 rounded-br-[4px] bg-gray-100 px-8 py-[7px]`;
+const QUESTION_BUBBLE = `${BUBBLE_BASE} min-w-0 rounded-br-[4px] bg-gray-100 px-8 py-[7px] text-center text-balance`;
 const ANSWER_BUBBLE = `${BUBBLE_BASE} rounded-bl-[4px] bg-blue-200 px-5 py-2.5`;
 
 // 노랑 줄이 먼저 올라오고, 1.2초 뒤 파랑 줄이 올라옴 (동작 줄이기 설정이면 바로 표시)

@@ -1,0 +1,14 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 21">
+<foreignObject x="-8" y="-8" width="104" height="104"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(4px);clip-path:url(#bgblur_0_0_38_clip_path);height:100%;width:100%"></div></foreignObject><circle id="Bubble/Right" data-figma-bg-blur-radius="8" cx="44" cy="44" r="44" fill="url(#paint0_radial_0_38)"/>
+<ellipse id="Eye/Right-1" cx="55.3142" cy="38.6575" rx="3.77143" ry="5.02857" fill="#161616"/>
+<ellipse id="Eye/Right-2" cx="68.5143" cy="38.6575" rx="3.77143" ry="5.02857" fill="#161616"/>
+</g>
+<defs>
+<clipPath id="bgblur_0_0_38_clip_path" transform="translate(8 8)"><circle cx="44" cy="44" r="44"/>
+</clipPath><radialGradient id="paint0_radial_0_38" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(44 44) rotate(90) scale(44)">
+<stop stop-color="#65AAFF"/>
+<stop offset="1" stop-color="#A2CFFF"/>
+</radialGradient>
+</defs>
+</svg>

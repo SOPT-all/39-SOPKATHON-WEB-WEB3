@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 interface AlertProps {
   isOpen: boolean;
   title: string;
-  description?: string; // 제목 아래 회색 설명
+  description?: string; // 제목 아래 설명
   buttonText: string;
   onButtonClick: () => void;
   onClose: () => void;
@@ -26,17 +26,17 @@ const Alert = ({ isOpen, title, description, buttonText, onButtonClick, onClose 
     <dialog
       ref={dialogRef}
       onClose={onClose}
-      className="m-auto w-[calc(100%-48px)] max-w-88.5 rounded-[20px] bg-white p-5.5 backdrop:bg-black/50"
+      className="m-auto w-[calc(100%-56px)] max-w-86.5 rounded-xl bg-white px-4.75 pt-8.25 pb-6 backdrop:bg-black/80"
     >
-      <div className="flex flex-col gap-9">
-        <div className="flex flex-col gap-1 py-0.5">
-          <h2 className="text-headline-md-sb text-gray-900">{title}</h2>
-          {description && <p className="text-body-md-m text-gray-500">{description}</p>}
+      <div className="flex flex-col gap-6.25">
+        <div className="flex flex-col gap-1 text-center text-gray-900">
+          <h2 className="text-headline-md-sb">{title}</h2>
+          {description && <p className="text-body-md-r">{description}</p>}
         </div>
         <button
           type="button"
           onClick={onButtonClick}
-          className="flex w-full items-center justify-center rounded-xl bg-gray-900 p-2.5 text-headline-sm-sb text-white"
+          className="flex h-13.5 w-full items-center justify-center rounded-xl bg-accent-red text-body-md-sb text-white"
         >
           {buttonText}
         </button>

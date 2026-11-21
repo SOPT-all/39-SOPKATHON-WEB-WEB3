@@ -29,9 +29,11 @@ const PreschoolGameGuidePage = () => {
       <div className="mt-4">
         <OptionCard title={GAME_GUIDE.title} description={GAME_GUIDE.description} />
       </div>
-      <div className="relative mt-18.25 ml-7 h-51.75 w-66" aria-hidden="true">
-        <img src={iconPreschoolGameBlue} alt="" className="absolute top-0 left-0 size-37.25" />
-        <img src={iconPreschoolGameYellow} alt="" className="absolute right-0 bottom-0 size-28" />
+      <div className="-mx-8 mt-18.25 pr-19.5 pl-15" aria-hidden="true">
+        <div className="relative aspect-[264/207] w-full">
+          <img src={iconPreschoolGameBlue} alt="" className="absolute top-0 left-0 w-[56.4%]" />
+          <img src={iconPreschoolGameYellow} alt="" className="absolute right-0 bottom-0 w-[42.4%]" />
+        </div>
       </div>
       <div className="sticky bottom-0 -mx-8 mt-auto bg-white px-8 pt-3 pb-8">
         <ActionButton onClick={handleStartClick}>놀이 시작하기</ActionButton>

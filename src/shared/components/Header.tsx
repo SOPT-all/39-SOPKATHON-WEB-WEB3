@@ -6,10 +6,11 @@ import iconLogoTypo from '@/shared/assets/icon-logo-typo.svg';
 interface HeaderProps {
   title?: string;
   hasSymbol?: boolean;
+  hasBackButton?: boolean; // 첫 화면처럼 돌아갈 곳이 없으면 false
   onBackClick?: () => void;
 }
 
-const Header = ({ title, hasSymbol = false, onBackClick }: HeaderProps) => {
+const Header = ({ title, hasSymbol = false, hasBackButton = true, onBackClick }: HeaderProps) => {
   const navigate = useNavigate();
 
   const handleBackClick = () => {
@@ -33,13 +34,15 @@ const Header = ({ title, hasSymbol = false, onBackClick }: HeaderProps) => {
         </h1>
       )}
 
-      <button
-        type="button"
-        onClick={handleBackClick}
-        className="flex size-8 items-center justify-center text-body-md-m text-gray-600"
-      >
-        뒤로
-      </button>
+      {hasBackButton && (
+        <button
+          type="button"
+          onClick={handleBackClick}
+          className="flex size-8 items-center justify-center text-body-md-m text-gray-600"
+        >
+          뒤로
+        </button>
+      )}
     </header>
   );
 };

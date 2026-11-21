@@ -40,7 +40,7 @@ const AgeGroupSelectPage = () => {
 
   return (
     <main className="flex min-h-dvh flex-col px-8 pb-8">
-      <Header hasSymbol />
+      <Header hasSymbol hasBackButton={false} />
 
       <h2 className="mt-17 text-headline-lg text-gray-900">연령대를 선택해주세요.</h2>
 

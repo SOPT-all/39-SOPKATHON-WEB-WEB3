@@ -16,9 +16,8 @@ const SchoolResultPage = () => {
     <main className="flex min-h-dvh flex-col px-8 pb-8">
       <Header title="게임 요약" />
       <h2 className="mt-17 text-headline-lg text-black">오늘 완성한 문장</h2>
-      {/* 좁은 화면(375px 미만)에선 간격을 줄여 한 줄 유지. 360px 미만은 두 줄 허용 */}
-      <div className="mt-4 flex h-15 items-center justify-center gap-4 rounded-xl bg-blue-100 p-2.5 min-[375px]:gap-[22px]">
-        <p className="text-body-md-m text-gray-700 min-[360px]:whitespace-nowrap">
+      <div className="mt-4 flex items-center justify-center gap-[22px] rounded-xl bg-blue-100 p-2.5">
+        <p className="text-body-md-m text-gray-700">
           {result.totalCount}문제를 풀고 {result.correctCount}문제를 맞혔어요
         </p>
         <img src={iconCharacterPair} alt="" className="shrink-0" />

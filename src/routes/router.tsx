@@ -6,6 +6,7 @@ import ElementaryAgeSelectPage from '@/pages/elementary-age-select/ElementaryAge
 import ElementaryGameIntroPage from '@/pages/elementary-game-intro/ElementaryGameIntroPage';
 import ElementaryResultPage from '@/pages/elementary-result/ElementaryResultPage';
 import ElementaryRoundPage from '@/pages/elementary-round/ElementaryRoundPage';
+import ElementaryGameListPage from '@/pages/elementary-game-list/ElementaryGameListPage';
 import HomePage from '@/pages/home/HomePage';
 import KidGameFinishPage from '@/pages/kid-game/KidGameFinishPage';
 import KidGameGuidePage from '@/pages/kid-game/KidGameGuidePage';
@@ -28,6 +29,7 @@ export const router = createBrowserRouter([
       { path: PATH.YOUNG_INPUT, element: <YoungInputPage /> },
       { path: PATH.ELEMENTARY_ROUND, element: <ElementaryRoundPage /> },
       { path: PATH.ELEMENTARY_RESULT, element: <ElementaryResultPage /> },
+      { path: PATH.ELEMENTARY_GAMES, element: <ElementaryGameListPage /> },
       // 없는 주소 → 404 (항상 맨 마지막에 두기)
       { path: '*', element: <NotFoundPage /> },
     ],

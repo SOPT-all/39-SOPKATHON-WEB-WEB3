@@ -1,0 +1,24 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="48" height="32" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="symbol" clip-path="url(#clip0_0_11)">
+<path id="Bubble/Left" d="M0 16C0 7.16344 7.16345 0 16 0C24.8366 0 32 7.16344 32 16C32 24.8366 24.8366 32 16 32H1.42857C0.639592 32 0 31.3604 0 30.5714V16Z" fill="url(#paint0_radial_0_11)"/>
+<foreignObject x="13.1429" y="-2.85714" width="37.7143" height="37.7143"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(1.43px);clip-path:url(#bgblur_1_0_11_clip_path);height:100%;width:100%"></div></foreignObject><ellipse id="Bubble/Right" data-figma-bg-blur-radius="2.85714" cx="32" cy="16" rx="16" ry="16" fill="url(#paint1_radial_0_11)"/>
+<ellipse id="Eye/Right-1" cx="36.1143" cy="14.0571" rx="1.37143" ry="1.82857" fill="black"/>
+<ellipse id="Eye/Right-1_2" cx="7.1694" cy="14.0072" rx="1.37143" ry="1.82857" transform="rotate(15 7.1694 14.0072)" fill="black"/>
+<ellipse id="Eye/Right-2" cx="40.9143" cy="14.0571" rx="1.37143" ry="1.82857" fill="black"/>
+<ellipse id="Eye/Right-2_2" cx="11.7939" cy="15.2493" rx="1.37143" ry="1.82857" transform="rotate(15 11.7939 15.2493)" fill="black"/>
+</g>
+<defs>
+<clipPath id="bgblur_1_0_11_clip_path" transform="translate(-13.1429 2.85714)"><ellipse cx="32" cy="16" rx="16" ry="16"/>
+</clipPath><radialGradient id="paint0_radial_0_11" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(17.7714 15.0857) rotate(137.188) scale(17.9938)">
+<stop offset="0.125044" stop-color="#FFE54D"/>
+<stop offset="1" stop-color="#FFF1A8"/>
+</radialGradient>
+<radialGradient id="paint1_radial_0_11" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(32 16) rotate(90) scale(16 16)">
+<stop stop-color="#65AAFF"/>
+<stop offset="1" stop-color="#A2CFFF"/>
+</radialGradient>
+<clipPath id="clip0_0_11">
+<rect width="48" height="32" fill="white"/>
+</clipPath>
+</defs>
+</svg>

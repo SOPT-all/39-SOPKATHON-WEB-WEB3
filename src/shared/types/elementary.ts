@@ -12,6 +12,16 @@ export interface ElementaryQuestion {
   choices: string[];
 }
 
+export interface ElementaryRoundResult {
+  totalCount: number;
+  correctCount: number;
+  questions: {
+    questionNumber: number;
+    isCorrect: boolean;
+    completedSentence: string;
+  }[];
+}
+
 export interface ElementaryAnswerResult {
   isCorrect: boolean;
   completedSentence: string;

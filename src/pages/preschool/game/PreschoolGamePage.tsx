@@ -1,19 +1,23 @@
-import { useNavigate, useSearchParams } from 'react-router';
+import { Navigate, useNavigate, useSearchParams } from 'react-router';
 
 import { PATH } from '@/routes/paths';
 import ActionButton from '@/shared/components/ActionButton';
 import Header from '@/shared/components/Header';
 import ImageView from '@/shared/components/ImageView';
 import StatusBar from '@/shared/components/StatusBar';
-import { MOCK_PRESCHOOL_QUESTIONS } from '@/shared/constants/mockPreschoolQuestions';
+import { getPreschoolRecommendation } from '@/shared/utils/preschoolStorage';
 
 const PreschoolGamePage = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
+  const questions = getPreschoolRecommendation()?.questions ?? [];
 
-  const totalCount = MOCK_PRESCHOOL_QUESTIONS.length;
+  // 추천 결과 없이 들어오면 입력 화면으로
+  if (questions.length === 0) return <Navigate to={PATH.PRESCHOOL_INPUT} replace />;
+
+  const totalCount = questions.length;
   const step = Math.min(Math.max(Number(searchParams.get('step')) || 1, 1), totalCount); // 1 ~ 3 사이로 고정
-  const currentQuestion = MOCK_PRESCHOOL_QUESTIONS[step - 1];
+  const currentQuestion = questions[step - 1];
   const isLastQuestion = step === totalCount;
 
   const handleFoundClick = () => {

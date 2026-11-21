@@ -22,7 +22,7 @@ const ElementaryGameIntroPage = () => {
   };
 
   return (
-    <main className="flex min-h-dvh flex-col px-8 pt-[66px] pb-8">
+    <main className="flex min-h-dvh flex-col px-8 pb-8">
       <Header />
       <h2 className="mt-17 text-headline-lg text-gray-900">오늘 진행할 게임이에요.</h2>
       <div className="mt-4">

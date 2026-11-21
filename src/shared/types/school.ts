@@ -24,14 +24,21 @@ export interface SchoolQuestion {
   choices: string[];
 }
 
+export interface SchoolRoundReview {
+  questionId: number;
+  correct: boolean;
+  correctAnswer: string;
+  selectedChoice?: {
+    choiceId: number;
+    text: string;
+  };
+  feedback?: string;
+}
+
 export interface SchoolRoundResult {
-  totalCount: number;
+  answeredCount: number;
   correctCount: number;
-  questions: {
-    questionNumber: number;
-    isCorrect: boolean;
-    completedSentence: string;
-  }[];
+  reviews: SchoolRoundReview[];
 }
 
 export interface SchoolAnswerResult {

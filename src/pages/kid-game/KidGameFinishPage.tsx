@@ -1,5 +1,74 @@
+import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router';
+
+import { PATH } from '@/routes/paths';
+import ActionButton from '@/shared/components/ActionButton';
+import Header from '@/shared/components/Header';
+import ImageView from '@/shared/components/ImageView';
+import { MOCK_KID_QUESTIONS } from '@/shared/constants/mockKidQuestions';
+
 const KidGameFinishPage = () => {
-  return <main>마무리</main>;
+  const navigate = useNavigate();
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const totalCount = MOCK_KID_QUESTIONS.length;
+
+  const handleSliderScroll = () => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+    setActiveIndex(Math.round(slider.scrollLeft / slider.clientWidth));
+  };
+
+  const handleDotClick = (index: number) => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+    slider.scrollTo({ left: index * slider.clientWidth, behavior: 'smooth' });
+  };
+
+  const handleRestartClick = () => {
+    navigate(PATH.HOME, { replace: true });
+  };
+
+  return (
+    <main className="flex min-h-dvh flex-col bg-white px-8 pb-8">
+      <Header title="놀이 마무리" />
+
+      <div className="mt-17 flex flex-col gap-1">
+        <h2 className="text-headline-lg text-black">오늘 찾은 물건</h2>
+        <p className="text-label-tab-m text-gray-600">
+          문제 {activeIndex + 1} / {totalCount}
+        </p>
+      </div>
+
+      <div
+        ref={sliderRef}
+        onScroll={handleSliderScroll}
+        className="-mx-8 mt-28 flex snap-x snap-mandatory scrollbar-none overflow-x-auto [&::-webkit-scrollbar]:hidden"
+      >
+        {MOCK_KID_QUESTIONS.map(({ imageUrl }, index) => (
+          <div key={index} className="flex w-full shrink-0 snap-center justify-center">
+            <ImageView src={imageUrl} />
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-auto mb-14 flex justify-center gap-2">
+        {MOCK_KID_QUESTIONS.map((_, index) => (
+          <button
+            key={index}
+            type="button"
+            aria-label={`${index + 1}번째 물건 보기`}
+            aria-current={activeIndex === index}
+            onClick={() => handleDotClick(index)}
+            className={`size-2 rounded-full ${activeIndex === index ? 'bg-blue-650' : 'bg-gray-300'}`}
+          />
+        ))}
+      </div>
+
+      <ActionButton onClick={handleRestartClick}>처음으로</ActionButton>
+    </main>
+  );
 };
 
 export default KidGameFinishPage;

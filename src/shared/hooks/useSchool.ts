@@ -10,4 +10,4 @@ export const useStartRound = () => {
     mutationFn: ({ gameId, age }: { gameId: number; age: number }) => postRound(gameId, { age }),
     onSuccess: (round) => queryClient.setQueryData(['rounds', round.roundId], round),
   });
-};   
+};

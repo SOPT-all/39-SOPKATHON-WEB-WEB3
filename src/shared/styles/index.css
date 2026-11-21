@@ -20,6 +20,9 @@
   --color-blue-200: #d7eaff;
   --color-blue-500: #a1cefe;
   --color-blue-650: #65aaff;
+
+  /* Accent */
+  --color-accent-red: #fa5862;
 }
 
 @layer base {
@@ -49,4 +52,92 @@
 
 @utility bg-gradient-blue {
   background-image: radial-gradient(closest-side, var(--color-blue-650), #a2cfff);
+}
+
+/* Typography */
+@utility text-display {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: -0.25px;
+}
+
+@utility text-headline-lg {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 36px;
+  letter-spacing: -0.25px;
+}
+
+@utility text-headline-md-sb {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+@utility text-headline-md-m {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+@utility text-headline-sm-sb {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+@utility text-headline-sm-m {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+@utility text-body-md-sb {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+@utility text-body-md-m {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+@utility text-body-md-r {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+@utility text-label-tab-sb {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+@utility text-label-tab-m {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+@utility text-caption-l-sb {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+@utility text-caption-l-m {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+@utility text-caption {
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: -0.2px;
 }

@@ -31,7 +31,7 @@ const PreschoolGameFinishPage = () => {
   };
 
   return (
-    <main className="flex min-h-dvh flex-col bg-white px-8 pb-8">
+    <main className="flex min-h-dvh flex-col bg-white px-8">
       <Header title="놀이 마무리" />
 
       <div className="mt-17 flex flex-col gap-1">
@@ -47,13 +47,13 @@ const PreschoolGameFinishPage = () => {
         className="-mx-8 mt-28 flex snap-x snap-mandatory scrollbar-none overflow-x-auto [&::-webkit-scrollbar]:hidden"
       >
         {MOCK_PRESCHOOL_QUESTIONS.map(({ imageUrl }, index) => (
-          <div key={index} className="flex w-full shrink-0 snap-center justify-center">
+          <div key={index} className="w-full shrink-0 snap-center px-10.25">
             <ImageView src={imageUrl} />
           </div>
         ))}
       </div>
 
-      <div className="mt-auto mb-14 flex justify-center gap-2">
+      <div className="mt-auto mb-11 flex justify-center gap-2">
         {MOCK_PRESCHOOL_QUESTIONS.map((_, index) => (
           <button
             key={index}
@@ -66,7 +66,9 @@ const PreschoolGameFinishPage = () => {
         ))}
       </div>
 
-      <ActionButton onClick={handleRestartClick}>처음으로</ActionButton>
+      <div className="sticky bottom-0 -mx-8 bg-white px-8 pt-3 pb-8">
+        <ActionButton onClick={handleRestartClick}>처음으로</ActionButton>
+      </div>
     </main>
   );
 };

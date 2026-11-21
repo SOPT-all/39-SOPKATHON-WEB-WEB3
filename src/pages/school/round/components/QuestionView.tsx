@@ -1,13 +1,14 @@
 import ActionButton from '@/shared/components/ActionButton';
 import AnswerButton from '@/shared/components/AnswerButton';
-import type { SchoolQuestion } from '@/shared/types/school';
+import type { SchoolRoundQuestion } from '@/shared/types/school';
 
 interface QuestionViewProps {
-  question: SchoolQuestion;
+  question: SchoolRoundQuestion;
   questionNumber: number;
   totalQuestions: number;
-  selectedChoice: string | null;
-  onChoiceClick: (choice: string) => void;
+  selectedChoiceId: number | null;
+  isSubmitting: boolean;
+  onChoiceClick: (choiceId: number) => void;
   onSubmitClick: () => void;
 }
 
@@ -18,26 +19,32 @@ const QuestionView = ({
   question,
   questionNumber,
   totalQuestions,
-  selectedChoice,
+  selectedChoiceId,
+  isSubmitting,
   onChoiceClick,
   onSubmitClick,
 }: QuestionViewProps) => {
   return (
     <section className="flex flex-1 flex-col">
       <div className="mt-[43px] flex flex-col gap-3">
-        <h2 className="text-headline-lg text-gray-900">{question.sentence}</h2>
+        <h2 className="text-headline-lg text-gray-900">{question.text}</h2>
         <p className="text-label-tab-m text-[#555b65]">
           문제 {questionNumber} / {totalQuestions}
         </p>
       </div>
       <div className="mt-[34px] flex flex-col gap-3">
-        {question.choices.map((choice) => (
-          <AnswerButton key={choice} isSelected={choice === selectedChoice} onClick={() => onChoiceClick(choice)}>
-            {choice}
+        {question.choices.map(({ choiceId, text }) => (
+          <AnswerButton
+            key={choiceId}
+            isSelected={choiceId === selectedChoiceId}
+            disabled={isSubmitting}
+            onClick={() => onChoiceClick(choiceId)}
+          >
+            {text}
           </AnswerButton>
         ))}
       </div>
-      <ActionButton className="mt-auto" disabled={!selectedChoice} onClick={onSubmitClick}>
+      <ActionButton className="mt-auto" disabled={selectedChoiceId === null || isSubmitting} onClick={onSubmitClick}>
         {SUBMIT_LABEL}
       </ActionButton>
     </section>

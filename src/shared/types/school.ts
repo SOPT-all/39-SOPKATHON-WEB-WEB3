@@ -18,12 +18,6 @@ export interface SchoolGameMeta {
   exampleAnswer: string;
 }
 
-export interface SchoolQuestion {
-  questionId: number;
-  sentence: string;
-  choices: string[];
-}
-
 export interface SchoolRoundReview {
   questionId: number;
   correct: boolean;
@@ -41,12 +35,6 @@ export interface SchoolRoundResult {
   reviews: SchoolRoundReview[];
 }
 
-export interface SchoolAnswerResult {
-  isCorrect: boolean;
-  completedSentence: string;
-  explanation: string;
-}
-
 export interface SchoolChoice {
   choiceId: number;
   text: string;
@@ -61,4 +49,17 @@ export interface SchoolRoundQuestion {
 export interface SchoolRound {
   roundId: number;
   questions: SchoolRoundQuestion[];
+}
+
+// POST /school/rounds/{roundId}/answers
+export interface SchoolAnswerRequest {
+  questionId: number;
+  choiceId: number;
+}
+
+export interface SchoolAnswer {
+  correct: boolean;
+  selectedChoice: SchoolChoice;
+  correctAnswer: string;
+  feedback: string;
 }

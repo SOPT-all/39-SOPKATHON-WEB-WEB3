@@ -1,41 +1,55 @@
+import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
-import { generatePath, useNavigate, useParams } from 'react-router';
+import { generatePath, Navigate, useNavigate, useParams } from 'react-router';
 
 import FeedbackView from '@/pages/school/round/components/FeedbackView';
 import QuestionView from '@/pages/school/round/components/QuestionView';
 import { PATH } from '@/routes/paths';
+import Alert from '@/shared/components/Alert';
 import Header from '@/shared/components/Header';
 import StatusBar from '@/shared/components/StatusBar';
-import { getMockAnswerResult } from '@/shared/constants/mockSchoolAnswers';
-import { MOCK_SCHOOL_QUESTIONS } from '@/shared/constants/mockSchoolQuestions';
-import type { SchoolAnswerResult } from '@/shared/types/school';
+import { useSubmitAnswer } from '@/shared/hooks/useSchool';
+import type { SchoolAnswer, SchoolRound } from '@/shared/types/school';
 
 const SchoolRoundPage = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const { roundId = '' } = useParams();
-  const questions = MOCK_SCHOOL_QUESTIONS;
-  const [questionIndex, setQuestionIndex] = useState(0);
-  const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
-  const [answerResult, setAnswerResult] = useState<SchoolAnswerResult | null>(null);
+  // 놀이 시작(useStartRound)이 캐시에 넣어 둔 회차를 처음 한 번만 읽어 보관 (캐시가 비워져도 풀이 유지)
+  const [round] = useState(() => queryClient.getQueryData<SchoolRound>(['rounds', Number(roundId)]));
 
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [selectedChoiceId, setSelectedChoiceId] = useState<number | null>(null);
+  const [answer, setAnswer] = useState<SchoolAnswer | null>(null);
+  const [isErrorOpen, setIsErrorOpen] = useState(false);
+  const { mutate: submitAnswer, isPending: isSubmitting } = useSubmitAnswer();
+
+  // 새로고침·주소 직접 입력 등으로 회차 정보가 없으면 놀이 목록으로
+  if (!round) return <Navigate to={PATH.SCHOOL_GAMES} replace />;
+
+  const { questions } = round;
   const question = questions[questionIndex];
   const isLastQuestion = questionIndex === questions.length - 1;
 
   const handleSubmitClick = () => {
-    if (!selectedChoice) return;
-    // TODO: 답변 제출 API(POST /school/rounds/{roundId}/answers) 응답으로 교체
-    setAnswerResult(getMockAnswerResult(question.questionId, selectedChoice));
+    if (selectedChoiceId === null) return;
+    submitAnswer(
+      { roundId: round.roundId, body: { questionId: question.questionId, choiceId: selectedChoiceId } },
+      { onSuccess: setAnswer, onError: () => setIsErrorOpen(true) },
+    );
   };
 
   const handleNextClick = () => {
     if (isLastQuestion) {
-      navigate(generatePath(PATH.SCHOOL_RESULT, { roundId }));
+      navigate(generatePath(PATH.SCHOOL_RESULT, { roundId: String(round.roundId) }));
       return;
     }
     setQuestionIndex((prev) => prev + 1);
-    setSelectedChoice(null);
-    setAnswerResult(null);
+    setSelectedChoiceId(null);
+    setAnswer(null);
   };
+
+  const handleErrorClose = () => setIsErrorOpen(false);
 
   return (
     <main className="flex min-h-dvh flex-col px-8 pb-8">
@@ -43,23 +57,27 @@ const SchoolRoundPage = () => {
       <div className="mt-5">
         <StatusBar currentStep={questionIndex + 1} totalSteps={questions.length} />
       </div>
-      {answerResult && selectedChoice ? (
-        <FeedbackView
-          result={answerResult}
-          selectedChoice={selectedChoice}
-          isLastQuestion={isLastQuestion}
-          onNextClick={handleNextClick}
-        />
+      {answer ? (
+        <FeedbackView result={answer} isLastQuestion={isLastQuestion} onNextClick={handleNextClick} />
       ) : (
         <QuestionView
           question={question}
           questionNumber={questionIndex + 1}
           totalQuestions={questions.length}
-          selectedChoice={selectedChoice}
-          onChoiceClick={setSelectedChoice}
+          selectedChoiceId={selectedChoiceId}
+          isSubmitting={isSubmitting}
+          onChoiceClick={setSelectedChoiceId}
           onSubmitClick={handleSubmitClick}
         />
       )}
+      <Alert
+        isOpen={isErrorOpen}
+        title="답을 보내지 못했어요"
+        description="잠시 후 다시 시도해 주세요."
+        buttonText="확인"
+        onButtonClick={handleErrorClose}
+        onClose={handleErrorClose}
+      />
     </main>
   );
 };

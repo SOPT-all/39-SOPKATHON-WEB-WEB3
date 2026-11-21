@@ -2,11 +2,12 @@
 
 <h1>해봄</h1>
 
-<img src="" width="600" alt="서비스대표-이미지" />
+<img width="1920" height="1080" alt="발표장표" src="https://github.com/user-attachments/assets/cecfb8d8-8e4e-4bd6-9169-50388450a3c9" />
+
 
 <p>
   식당이나 병원에서 기다리는 시간을<br/>
-  유아의 <b>그림 찾기</b>와 초등학생의 <b>생활 미션</b>으로<br/>
+  유아의 <b>주변 물건 찾기</b>와 초등학생의 <b>학교생활 표현 게임</b>으로<br/>
   <b>말해 보고, 생각해 보고, 선택해 보는</b> 학습 놀이로 바꾸는 웹 서비스
 </p>
 
@@ -18,26 +19,49 @@
 
 <table>
   <tr align="center">
-    <th width="50%">1️⃣ 유아 · 장소별 주변 찾기 놀이</th>
-    <th width="50%">2️⃣ 초등학생 · 학교생활 표현 게임</th>
+    <th width="50%">1️⃣ 유아 (4~7세) · 장소별 주변 물건 찾기</th>
+    <th width="50%">2️⃣ 초등 저학년 (8~10세) · 학교생활 표현 게임</th>
   </tr>
   <tr align="center">
-    <td><img src="" width="280" alt="기능1-대표이미지" /></td>
-    <td><img src="" width="280" alt="기능2-대표이미지" /></td>
+    <td><img width="600" alt="핵심기능1" src="https://github.com/user-attachments/assets/4e3fbcbb-9f70-45a1-8882-728811f063ab" />
+</td>
+    <td><img width="600" alt="핵심기능2" src="https://github.com/user-attachments/assets/14aa7895-5cb3-4571-af09-65d09697107d" />
+</td>
   </tr>
   <tr>
     <td>
-      <b>입력한 장소에 맞는 놀이</b><br/>
-      양육자가 질문을 읽어주면, 아이는 실제 주변에서 모양이나 색깔을 찾아 가리켜요.
-      찾으면 [찾았어요]를 눌러 다음 문제로 넘어가요.
+      <b>지금 있는 장소에 맞춘 놀이</b><br/>
+      아이의 나이와 대기 장소, 예상 대기시간을 입력하면 해봄이 놀이를 추천해요.<br/>
+      양육자가 질문을 읽어주면 아이는 주변에서 <b>동그란 것, 길쭉한 것, 네모난 것</b>을 찾아 가리켜요.
+      찾으면 <b>[찾았어요]</b>를 눌러 다음 문제로 넘어가요.<br/>
+      놀이가 끝나면 <b>오늘 찾은 물건</b>을 다시 넘겨보며 마무리해요.
     </td>
     <td>
       <b>혼자 읽고 직접 고르는 미션</b><br/>
-      문장 완성하기, 반대말 탐정, 이럴 땐 뭐라고? 중 하나를 골라
-      두 표현 중 알맞은 것을 선택하고, 바로 설명을 확인해요.
+      나이를 고른 뒤 세 가지 놀이 중 하나를 선택해요.<br/>
+      · <b>문장 완성하기</b>: 빈칸에 어울리는 낱말 고르기<br/>
+      · <b>반대말 탐정</b>: 뜻이 반대인 낱말 찾기<br/>
+      · <b>이럴 땐 뭐라고?</b>: 학교 상황에 맞는 말 고르기<br/>
+      한 놀이는 세 문제로 진행돼요. 답을 고르면 바로 <b>완성된 문장과 설명</b>을 보여 주고,
+      마지막에는 <b>맞힌 개수와 오늘 완성한 문장</b>을 요약해 보여줘요.
     </td>
   </tr>
 </table>
+
+<br/>
+
+## 🗺 사용자 플로우
+
+```
+연령대 선택
+├─ 유아 (4~7세)
+│   아이 정보 입력 (나이 · 장소 · 대기시간) → 놀이 추천 로딩 → 놀이 안내
+│   → 주변 물건 찾기 (3문제) → 놀이 마무리 (오늘 찾은 물건)
+│
+└─ 초등 저학년 (8~10세)
+    나이 선택 → 놀이 목록 → 놀이 소개 (예시 문제)
+    → 문제 풀이 · 즉시 피드백 (3문제) → 게임 요약
+```
 
 <br/>
 
@@ -86,15 +110,25 @@
 
 ## 🛠 기술 스택
 
-| 역할                   | 기술                    |
-| ---------------------- | ----------------------- |
-| 패키지 매니저 / 번들러 | pnpm, Vite              |
-| 언어                   | React 19, TypeScript    |
-| 스타일                 | Tailwind CSS v4         |
-| 라우팅                 | React Router            |
-| HTTP 클라이언트        | ky                      |
-| 서버 상태 관리         | TanStack Query          |
-| 배포                   | Vercel (GitHub Actions) |
+| 역할                   | 기술                             |
+| ---------------------- | -------------------------------- |
+| 패키지 매니저 / 번들러 | pnpm, Vite                       |
+| 언어 / 프레임워크      | React 19, TypeScript             |
+| 스타일                 | Tailwind CSS v4                  |
+| 라우팅                 | React Router v8                  |
+| HTTP 클라이언트        | ky v2                            |
+| 서버 상태 관리         | TanStack Query v5                |
+| 코드 품질              | ESLint, Prettier                 |
+| CI / CD                | GitHub Actions, Vercel           |
+
+<br/>
+
+## 🚀 CI / CD
+
+| 워크플로 | 시점            | 내용                         |
+| -------- | --------------- | ---------------------------- |
+| `CI`     | PR 생성 · 업데이트 | 빌드 검사                    |
+| `CD`     | `main` push      | Vercel Production 자동 배포 |
 
 <br/>
 
@@ -138,6 +172,9 @@
 📦 src/
 ├── 🗂️ layout/          # 레이아웃
 ├── 🗂️ pages/           # 페이지 (전용 컴포넌트는 pages/<page>/components/)
+│   ├── 🗂️ age-group-select/   # 연령대 선택
+│   ├── 🗂️ preschool/          # 유아: input, game-guide, game, game-finish
+│   └── 🗂️ school/             # 초등: age-select, game-list, game-intro, round, result
 ├── 🗂️ routes/          # 라우터, 경로 상수
 └── 🗂️ shared/          # 공용
     ├── 🗂️ apis/        # API 함수, ky 클라이언트
@@ -148,6 +185,16 @@
     ├── 🗂️ styles/      # 전역 스타일, 디자인 토큰
     ├── 🗂️ types/       # 공통 타입
     └── 🗂️ utils/       # 유틸 함수
+```
+
+<br/>
+
+## ▶️ 실행 방법
+
+```bash
+pnpm install
+pnpm dev     # 개발 서버
+pnpm build   # 빌드 검사
 ```
 
 <br/>
@@ -171,6 +218,7 @@
   </tr>
   <tr align="center">
     <td><img width="380" alt="웨비 팀원들 사진 (before)" src="https://github.com/user-attachments/assets/22863aae-653a-4783-b7b7-671cd4b6e2e1" /></td>
-    <td><img width="380" src="" alt="웨비 팀원들 사진 (after)" /></td>
+    <td><img width="380" alt="웨비 팀원들 사진(after)" src="https://github.com/user-attachments/assets/38b9b363-5c98-450f-9f48-ad466f71b468" />
+</td>
   </tr>
 </table>

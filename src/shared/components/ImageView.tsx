@@ -5,8 +5,10 @@ interface ImageViewProps {
 
 const ImageView = ({ src, alt = '' }: ImageViewProps) => {
   return (
-    <div className="size-80 overflow-hidden bg-[#d9d9d9]">
-      {src && <img src={src} alt={alt} className="size-full object-cover" />}
+    <div
+      className={`flex aspect-square w-full items-center justify-center overflow-hidden ${src ? '' : 'bg-gray-200'}`}
+    >
+      {src && <img src={src} alt={alt} className="size-full object-contain" />}
     </div>
   );
 };

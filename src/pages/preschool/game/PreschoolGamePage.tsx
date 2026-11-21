@@ -39,7 +39,7 @@ const PreschoolGamePage = () => {
         </p>
       </div>
 
-      <div className="mt-17 self-center">
+      <div className="-mx-8 mt-17 px-10.25">
         <ImageView src={currentQuestion.imageUrl} />
       </div>
 

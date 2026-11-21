@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import FormSection from '@/pages/young/components/FormSection';
+import WaitTimeButton from '@/pages/young/components/WaitTimeButton';
 import ActionButton from '@/shared/components/ActionButton';
 import Header from '@/shared/components/Header';
 import SelectButton from '@/shared/components/SelectButton';
@@ -62,13 +63,13 @@ const YoungInputPage = () => {
         <FormSection title="예상 대기시간을 알려주세요.">
           <div className="grid grid-cols-3 gap-3">
             {WAIT_TIME_OPTIONS.map((waitTime) => (
-              <SelectButton
+              <WaitTimeButton
                 key={waitTime}
                 isSelected={selectedWaitTime === waitTime}
                 onClick={() => handleWaitTimeClick(waitTime)}
               >
                 {waitTime}분
-              </SelectButton>
+              </WaitTimeButton>
             ))}
           </div>
         </FormSection>

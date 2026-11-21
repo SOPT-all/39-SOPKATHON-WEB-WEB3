@@ -5,12 +5,12 @@ import { PATH } from '@/routes/paths';
 import iconCharacterPair from '@/shared/assets/icon-character-pair.svg';
 import ActionButton from '@/shared/components/ActionButton';
 import Header from '@/shared/components/Header';
-import { MOCK_ELEMENTARY_RESULT } from '@/shared/constants/mockElementaryResult';
+import { MOCK_SCHOOL_RESULT } from '@/shared/constants/mockSchoolResult';
 
-const ElementaryResultPage = () => {
+const SchoolResultPage = () => {
   const navigate = useNavigate();
   // TODO: 회차 결과 API(GET /school/rounds/{roundId}/result) 응답으로 교체
-  const result = MOCK_ELEMENTARY_RESULT;
+  const result = MOCK_SCHOOL_RESULT;
 
   return (
     <main className="flex min-h-dvh flex-col px-8 pb-8">
@@ -38,8 +38,11 @@ const ElementaryResultPage = () => {
         ))}
       </ul>
       <div className="mt-auto flex flex-col items-center gap-0.5">
-        {/* TODO: 놀이 목록(게임 선택) 화면이 머지되면 이동 연결 */}
-        <button type="button" className="h-13.5 p-2.5 text-body-md-m text-gray-500">
+        <button
+          type="button"
+          onClick={() => navigate(PATH.SCHOOL_GAMES)}
+          className="h-13.5 p-2.5 text-body-md-m text-gray-500"
+        >
           놀이 목록으로
         </button>
         <ActionButton onClick={() => navigate(PATH.HOME)}>처음으로</ActionButton>
@@ -48,4 +51,4 @@ const ElementaryResultPage = () => {
   );
 };
 
-export default ElementaryResultPage;
+export default SchoolResultPage;

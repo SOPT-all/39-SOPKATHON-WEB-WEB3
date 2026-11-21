@@ -5,14 +5,14 @@ import { PATH } from '@/routes/paths';
 import ActionButton from '@/shared/components/ActionButton';
 import Header from '@/shared/components/Header';
 import ImageView from '@/shared/components/ImageView';
-import { MOCK_KID_QUESTIONS } from '@/shared/constants/mockKidQuestions';
+import { MOCK_PRESCHOOL_QUESTIONS } from '@/shared/constants/mockPreschoolQuestions';
 
-const KidGameFinishPage = () => {
+const PreschoolGameFinishPage = () => {
   const navigate = useNavigate();
   const sliderRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const totalCount = MOCK_KID_QUESTIONS.length;
+  const totalCount = MOCK_PRESCHOOL_QUESTIONS.length;
 
   const handleSliderScroll = () => {
     const slider = sliderRef.current;
@@ -46,7 +46,7 @@ const KidGameFinishPage = () => {
         onScroll={handleSliderScroll}
         className="-mx-8 mt-28 flex snap-x snap-mandatory scrollbar-none overflow-x-auto [&::-webkit-scrollbar]:hidden"
       >
-        {MOCK_KID_QUESTIONS.map(({ imageUrl }, index) => (
+        {MOCK_PRESCHOOL_QUESTIONS.map(({ imageUrl }, index) => (
           <div key={index} className="flex w-full shrink-0 snap-center justify-center">
             <ImageView src={imageUrl} />
           </div>
@@ -54,7 +54,7 @@ const KidGameFinishPage = () => {
       </div>
 
       <div className="mt-auto mb-14 flex justify-center gap-2">
-        {MOCK_KID_QUESTIONS.map((_, index) => (
+        {MOCK_PRESCHOOL_QUESTIONS.map((_, index) => (
           <button
             key={index}
             type="button"
@@ -71,4 +71,4 @@ const KidGameFinishPage = () => {
   );
 };
 
-export default KidGameFinishPage;
+export default PreschoolGameFinishPage;

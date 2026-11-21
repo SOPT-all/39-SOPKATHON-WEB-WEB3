@@ -1,6 +1,6 @@
 import { PATH } from '@/routes/paths';
-import iconKidGameBlue from '@/shared/assets/icon-kid-game-blue.svg';
-import iconKidGameYellow from '@/shared/assets/icon-kid-game-yellow.svg';
+import iconPreschoolGameBlue from '@/shared/assets/icon-preschool-game-blue.svg';
+import iconPreschoolGameYellow from '@/shared/assets/icon-preschool-game-yellow.svg';
 import ActionButton from '@/shared/components/ActionButton';
 import Header from '@/shared/components/Header';
 import OptionCard from '@/shared/components/OptionCard';
@@ -11,12 +11,12 @@ const GAME_GUIDE = {
   description: '아이와 함께 주변을 둘러보세요.\n해당하는 물건을 찾았다면 ‘찾았어요’를 눌러 주세요.',
 };
 
-const KidGameGuidePage = () => {
+const PreschoolGameGuidePage = () => {
   const navigate = useNavigate();
   const place = '식당';
 
   const handleStartClick = () => {
-    navigate(PATH.KID_GAME);
+    navigate(PATH.PRESCHOOL_GAME);
   };
 
   return (
@@ -30,8 +30,8 @@ const KidGameGuidePage = () => {
       </div>
 
       <div className="relative mt-18.25 ml-7 h-51.75 w-66" aria-hidden="true">
-        <img src={iconKidGameBlue} alt="" className="absolute top-0 left-0 size-37.25" />
-        <img src={iconKidGameYellow} alt="" className="absolute right-0 bottom-0 size-28" />
+        <img src={iconPreschoolGameBlue} alt="" className="absolute top-0 left-0 size-37.25" />
+        <img src={iconPreschoolGameYellow} alt="" className="absolute right-0 bottom-0 size-28" />
       </div>
 
       <ActionButton className="mt-auto" onClick={handleStartClick}>
@@ -41,4 +41,4 @@ const KidGameGuidePage = () => {
   );
 };
 
-export default KidGameGuidePage;
+export default PreschoolGameGuidePage;

@@ -1,9 +1,9 @@
 import ActionButton from '@/shared/components/ActionButton';
 import OptionCard from '@/shared/components/OptionCard';
-import type { ElementaryAnswerResult } from '@/shared/types/elementary';
+import type { SchoolAnswerResult } from '@/shared/types/school';
 
 interface FeedbackViewProps {
-  result: ElementaryAnswerResult;
+  result: SchoolAnswerResult;
   selectedChoice: string;
   isLastQuestion: boolean;
   onNextClick: () => void;

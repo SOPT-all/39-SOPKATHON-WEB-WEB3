@@ -1,9 +1,9 @@
 import ActionButton from '@/shared/components/ActionButton';
 import AnswerButton from '@/shared/components/AnswerButton';
-import type { ElementaryQuestion } from '@/shared/types/elementary';
+import type { SchoolQuestion } from '@/shared/types/school';
 
 interface QuestionViewProps {
-  question: ElementaryQuestion;
+  question: SchoolQuestion;
   questionNumber: number;
   totalQuestions: number;
   selectedChoice: string | null;
@@ -11,7 +11,7 @@ interface QuestionViewProps {
   onSubmitClick: () => void;
 }
 
-// ponytail: Figma 하단 버튼 문구가 화면마다 달라(놀이 시작하기/다음 문제 보기) 임시 문구. 디자이너 확인 후 교체
+// TODO: Figma 하단 버튼 문구가 화면마다 달라(놀이 시작하기/다음 문제 보기) 임시 문구. 디자이너 확인 후 교체
 const SUBMIT_LABEL = '확인하기';
 
 const QuestionView = ({

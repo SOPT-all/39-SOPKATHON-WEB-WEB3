@@ -5,20 +5,20 @@ import ActionButton from '@/shared/components/ActionButton';
 import GameContextBox from '@/shared/components/GameContextBox';
 import Header from '@/shared/components/Header';
 import OptionCard from '@/shared/components/OptionCard';
-import { MOCK_ELEMENTARY_GAMES } from '@/shared/constants/mockElementaryGames';
+import { MOCK_SCHOOL_GAMES } from '@/shared/constants/mockSchoolGames';
 
 // TODO: 회차 생성 API(POST /school/games/{gameId}/rounds) 응답의 roundId로 교체
 const MOCK_ROUND_ID = 1;
 
-const ElementaryGameIntroPage = () => {
+const SchoolGameIntroPage = () => {
   const navigate = useNavigate();
   const { gameId } = useParams();
-  const game = MOCK_ELEMENTARY_GAMES.find((item) => item.gameId === Number(gameId));
+  const game = MOCK_SCHOOL_GAMES.find((item) => item.gameId === Number(gameId));
 
   if (!game) return null;
 
   const handleStartClick = () => {
-    navigate(generatePath(PATH.ELEMENTARY_ROUND, { roundId: String(MOCK_ROUND_ID) }));
+    navigate(generatePath(PATH.SCHOOL_ROUND, { roundId: String(MOCK_ROUND_ID) }));
   };
 
   return (
@@ -38,4 +38,4 @@ const ElementaryGameIntroPage = () => {
   );
 };
 
-export default ElementaryGameIntroPage;
+export default SchoolGameIntroPage;

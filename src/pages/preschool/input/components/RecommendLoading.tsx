@@ -9,7 +9,7 @@ interface RecommendLoadingProps {
 // 놀이 추천 중 로딩 화면
 const RecommendLoading = ({ onBackClick }: RecommendLoadingProps) => {
   return (
-    <main className="flex min-h-dvh flex-col px-8 pt-3 pb-8">
+    <main className="flex min-h-dvh flex-col px-8 pb-8">
       <Header onBackClick={onBackClick} />
 
       <div role="status" className="flex flex-1 flex-col items-center justify-center gap-12">

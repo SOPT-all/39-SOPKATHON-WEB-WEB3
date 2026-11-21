@@ -1,4 +1,4 @@
-export interface ElementaryGame {
+export interface SchoolGame {
   gameId: number;
   name: string;
   description: string;
@@ -6,13 +6,13 @@ export interface ElementaryGame {
   exampleAnswer: string;
 }
 
-export interface ElementaryQuestion {
+export interface SchoolQuestion {
   questionId: number;
   sentence: string;
   choices: string[];
 }
 
-export interface ElementaryRoundResult {
+export interface SchoolRoundResult {
   totalCount: number;
   correctCount: number;
   questions: {
@@ -22,7 +22,7 @@ export interface ElementaryRoundResult {
   }[];
 }
 
-export interface ElementaryAnswerResult {
+export interface SchoolAnswerResult {
   isCorrect: boolean;
   completedSentence: string;
   explanation: string;

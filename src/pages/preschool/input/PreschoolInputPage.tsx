@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 
-import FormSection from '@/pages/young/components/FormSection';
-import RecommendLoading from '@/pages/young/components/RecommendLoading';
-import WaitTimeButton from '@/pages/young/components/WaitTimeButton';
+import FormSection from '@/pages/preschool/input/components/FormSection';
+import RecommendLoading from '@/pages/preschool/input/components/RecommendLoading';
+import WaitTimeButton from '@/pages/preschool/input/components/WaitTimeButton';
 import { PATH } from '@/routes/paths';
 import ActionButton from '@/shared/components/ActionButton';
 import Header from '@/shared/components/Header';
@@ -14,7 +14,7 @@ const AGE_OPTIONS = [4, 5, 6, 7];
 const WAIT_TIME_OPTIONS = [5, 10, 15, 20, 25, 30];
 const LOADING_DURATION = 2000;
 
-const YoungInputPage = () => {
+const PreschoolInputPage = () => {
   const navigate = useNavigate();
   const [selectedAge, setSelectedAge] = useState<number | null>(null);
   const [place, setPlace] = useState('');
@@ -26,7 +26,7 @@ const YoungInputPage = () => {
   useEffect(() => {
     if (!isLoading) return;
 
-    const timer = setTimeout(() => navigate(PATH.KID_GAME_GUIDE), LOADING_DURATION);
+    const timer = setTimeout(() => navigate(PATH.PRESCHOOL_GAME_GUIDE), LOADING_DURATION);
     return () => clearTimeout(timer);
   }, [isLoading, navigate]);
 
@@ -48,7 +48,7 @@ const YoungInputPage = () => {
   if (isLoading) return <RecommendLoading onBackClick={handleLoadingBackClick} />;
 
   return (
-    <main className="flex min-h-dvh flex-col px-8 pt-3 pb-8">
+    <main className="flex min-h-dvh flex-col px-8 pb-8">
       <Header hasSymbol />
 
       <div className="mt-17 flex flex-col gap-3">
@@ -101,4 +101,4 @@ const YoungInputPage = () => {
   );
 };
 
-export default YoungInputPage;
+export default PreschoolInputPage;

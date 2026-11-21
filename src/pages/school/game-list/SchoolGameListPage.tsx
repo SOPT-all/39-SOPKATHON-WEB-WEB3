@@ -16,7 +16,7 @@ const GAME_OPTIONS = [
   { gameId: 3, iconSrc: iconQuestionMark, title: '이럴 땐 뭐라고?', description: '상황에 맞는 말을 골라요' },
 ];
 
-const ElementaryGameListPage = () => {
+const SchoolGameListPage = () => {
   const navigate = useNavigate();
   const [selectedGameId, setSelectedGameId] = useState<number | null>(null);
 
@@ -24,7 +24,7 @@ const ElementaryGameListPage = () => {
 
   const handleCompleteClick = () => {
     if (selectedGameId === null) return;
-    navigate(generatePath(PATH.ELEMENTARY_GAME_INTRO, { gameId: String(selectedGameId) }));
+    navigate(generatePath(PATH.SCHOOL_GAME_INTRO, { gameId: String(selectedGameId) }));
   };
 
   return (
@@ -56,4 +56,4 @@ const ElementaryGameListPage = () => {
   );
 };
 
-export default ElementaryGameListPage;
+export default SchoolGameListPage;

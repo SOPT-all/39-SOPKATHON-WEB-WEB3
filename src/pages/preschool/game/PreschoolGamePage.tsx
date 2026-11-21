@@ -5,20 +5,20 @@ import ActionButton from '@/shared/components/ActionButton';
 import Header from '@/shared/components/Header';
 import ImageView from '@/shared/components/ImageView';
 import StatusBar from '@/shared/components/StatusBar';
-import { MOCK_KID_QUESTIONS } from '@/shared/constants/mockKidQuestions';
+import { MOCK_PRESCHOOL_QUESTIONS } from '@/shared/constants/mockPreschoolQuestions';
 
-const KidGamePage = () => {
+const PreschoolGamePage = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const totalCount = MOCK_KID_QUESTIONS.length;
+  const totalCount = MOCK_PRESCHOOL_QUESTIONS.length;
   const step = Math.min(Math.max(Number(searchParams.get('step')) || 1, 1), totalCount); // 1 ~ 3 사이로 고정
-  const currentQuestion = MOCK_KID_QUESTIONS[step - 1];
+  const currentQuestion = MOCK_PRESCHOOL_QUESTIONS[step - 1];
   const isLastQuestion = step === totalCount;
 
   const handleFoundClick = () => {
     if (isLastQuestion) {
-      navigate(PATH.KID_GAME_FINISH, { replace: true });
+      navigate(PATH.PRESCHOOL_GAME_FINISH, { replace: true });
       return;
     }
     setSearchParams({ step: String(step + 1) });
@@ -50,4 +50,4 @@ const KidGamePage = () => {
   );
 };
 
-export default KidGamePage;
+export default PreschoolGamePage;

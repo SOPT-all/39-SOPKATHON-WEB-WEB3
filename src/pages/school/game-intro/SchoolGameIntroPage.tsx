@@ -28,7 +28,7 @@ const SchoolGameIntroPage = () => {
       <div className="mt-4">
         <OptionCard title={game.name} description={game.description} />
       </div>
-      <div className="mt-24">
+      <div className="-mx-8 mt-24 px-15">
         <GameContextBox question={game.exampleQuestion} answer={game.exampleAnswer} />
       </div>
       <ActionButton className="mt-auto" onClick={handleStartClick}>

@@ -7,6 +7,7 @@ import ElementaryRoundPage from '@/pages/elementary-round/ElementaryRoundPage';
 import HomePage from '@/pages/home/HomePage';
 import NotFoundPage from '@/pages/not-found/NotFoundPage';
 import { PATH } from '@/routes/paths';
+import KidGameGuidePage from '@/pages/kid-game/KidGameGuidePage';
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ export const router = createBrowserRouter([
     children: [
       { path: PATH.HOME, element: <HomePage /> },
       { path: PATH.ELEMENTARY_AGE_SELECT, element: <ElementaryAgeSelectPage /> },
+      { path: PATH.KID_GAME_GUIDE, element: <KidGameGuidePage /> },
       { path: PATH.ELEMENTARY_GAME_INTRO, element: <ElementaryGameIntroPage /> },
       { path: PATH.ELEMENTARY_ROUND, element: <ElementaryRoundPage /> },
       // 없는 주소 → 404 (항상 맨 마지막에 두기)

@@ -5,20 +5,15 @@ import ActionButton from '@/shared/components/ActionButton';
 import Header from '@/shared/components/Header';
 import ImageView from '@/shared/components/ImageView';
 import StatusBar from '@/shared/components/StatusBar';
-
-const MOCK_QUESTIONS = [
-  { text: '식탁 위에서\n동그란거를 찾아볼래?', imageUrl: '' },
-  { text: '길쭉한 물건은\n어디에 있을까?', imageUrl: '' },
-  { text: '주변에서 네모난 것들을\n찾아볼까?', imageUrl: '' },
-];
+import { MOCK_KID_QUESTIONS } from '@/shared/constants/mockKidQuestions';
 
 const KidGamePage = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const totalCount = MOCK_QUESTIONS.length;
+  const totalCount = MOCK_KID_QUESTIONS.length;
   const step = Math.min(Math.max(Number(searchParams.get('step')) || 1, 1), totalCount); // 1 ~ 3 사이로 고정
-  const currentQuestion = MOCK_QUESTIONS[step - 1];
+  const currentQuestion = MOCK_KID_QUESTIONS[step - 1];
   const isLastQuestion = step === totalCount;
 
   const handleFoundClick = () => {

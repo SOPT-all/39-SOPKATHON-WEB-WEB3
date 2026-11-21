@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router';
+import { Navigate, useNavigate } from 'react-router';
 
 import { PATH } from '@/routes/paths';
 import iconPreschoolGameBlue from '@/shared/assets/icon-preschool-game-blue.svg';
@@ -6,6 +6,7 @@ import iconPreschoolGameYellow from '@/shared/assets/icon-preschool-game-yellow.
 import ActionButton from '@/shared/components/ActionButton';
 import Header from '@/shared/components/Header';
 import OptionCard from '@/shared/components/OptionCard';
+import { getPreschoolRecommendation } from '@/shared/utils/preschoolStorage';
 
 const GAME_GUIDE = {
   title: '주변 물건 찾기',
@@ -14,7 +15,10 @@ const GAME_GUIDE = {
 
 const PreschoolGameGuidePage = () => {
   const navigate = useNavigate();
-  const place = '식당';
+  const recommendation = getPreschoolRecommendation();
+
+  // 추천 결과 없이 들어오면 입력 화면으로
+  if (!recommendation) return <Navigate to={PATH.PRESCHOOL_INPUT} replace />;
 
   const handleStartClick = () => {
     navigate(PATH.PRESCHOOL_GAME);
@@ -24,7 +28,7 @@ const PreschoolGameGuidePage = () => {
     <main className="flex min-h-dvh flex-col bg-white px-8">
       <Header />
 
-      <h2 className="mt-17 text-headline-lg text-gray-900">{place}에서 해볼 놀이</h2>
+      <h2 className="mt-17 text-headline-lg text-gray-900">{recommendation.placeName}에서 해볼 놀이</h2>
 
       <div className="mt-4">
         <OptionCard title={GAME_GUIDE.title} description={GAME_GUIDE.description} />
